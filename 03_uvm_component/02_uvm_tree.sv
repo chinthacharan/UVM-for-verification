@@ -10,6 +10,7 @@ class a extends uvm_component;
         super.new(path, parent);
     endfunction
 
+    //build phase is used for get and set method 
     virtual function void build_phase(uvm_phase phase); //more on this later
         super.build_phase(phase);
         `uvm_info("a", "Class a is executed", UVM_NONE);

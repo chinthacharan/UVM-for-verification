@@ -1,0 +1,33 @@
+phases classification based on time are consume time and Do not consume time
+consume time are implemented using task which do not use super
+Do not consume time are implemented using function and requires usage of super
+
+phases are three types: construction phase (do not consume time), run_phase(Consume time), cleanup phase(do not consume time)
+
+Construction phase(4) is again have build_phase, connect_phase, end_of_elaboration_phase and start_of_simulation
+build_phase is used to create the object of a class
+connect_phase is used in TLM
+end_of_elaboration_phase is used to adjust the hierarchy
+start_of_simulation is used to configure the env before start of dut
+
+run_phase(12) is again having reset_phase, configure_phase, main_phase, shutdown_phase
+each phases we have pre and post phases
+reset_phase - system reset
+configure_phase - initialize Mem/arrays/variable
+main_phase - Generating stimuli + collecting response
+shutdown_phase - stimuli generation and response reception is completed successfully
+
+cleanup phase(4) is again having extract, check, report and final
+cleanup phase is ued to collect and report data
+The coverage goals are achieved
+
+Total phases are 4 + 12 + 4 = 20 phases
+
+phases - Do not consume time (function + super) - {Build phase, connect phase}, end_of_elaboration_phase. start_of_simulation_phase
+        Consume time (task) - run_phase
+
+Tree:
+Test -> ENV -> Agent -> DRV/MON
+            -> Scoreboard
+This tree is called top down and only build_phase works in this top- down fashion
+where as the other phases works in bottom up fashion

@@ -1,0 +1,25 @@
+In systemVerilog verification we know that for communication between two classes we have mailbox and semaphore 
+Similarly in UVM we have TLM (transaction level Modelling)
+
+Generator/Sequencer -> Driver  -> Interface  -> DUT
+Scoreboard          <- Monitor <- Interface  <- DUT
+
+Sequencer -> Driver : special TLM port: SEQ_ITEM_PORT
+Monitor -> Scoreboard : TLM Port: UVM_ANALYSIS PORT 
+
+TLM terminology;
+Port => initiator of transaction (shown with square)
+Export => Responder of transaction (shown with circle)
+
+Three options;
+If control and data flow is in same direction it is put operation
+If control and data flow is in opposite direction it is get operation
+If data flow is in both the directions it is transport operation
+
+tip:
+create class extending corresponding reporting mechanism
+register class to factory
+instantiate any variable or classes
+create new method
+create constructor for instantiated classes 
+perform operation

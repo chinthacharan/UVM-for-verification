@@ -23,3 +23,6 @@ instantiate any variable or classes
 create new method
 create constructor for instantiated classes 
 perform operation
+
+Env: connect_phase for making connections
+test: print the hierarchy by using end_of_elaboration_phase

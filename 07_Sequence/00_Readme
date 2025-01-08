@@ -1,0 +1,29 @@
+Sequencer -> Driver --{Interface}--> DUT
+
+A series of sequences are applied to sequencer which then applied to Driver
+This sequences can be like write, read, addr operations
+
+Sequencer has seq_item_export 
+Driver has seq_item_port 
+TLM communication happens between these ports
+
+Hierarchy:
+Agent has Sequencer, Driver and Monitor
+Env has Agent and scoreboard
+Test has Env and sequence
+
+Transaction -> sequence -> Sequencer -> Driver -> {Interface} -> DUT
+                         scoreboard <- Monitor <- {Interface} <- DUT
+
+Transaction - Tracks I/O ports of RTL
+sequence - generate sequences
+sequencer - sends the sequence to Driver
+driver - apply stimulus to DUT
+Monitor - Receives response from DUT
+scoreboard - compare with golden data
+
+We don't need to manually create a class for sequencer 
+Transaction and sequence are dynamic so we use uvm_object
+But driver is static class as it remains same throughout the simulation duration
+
+
